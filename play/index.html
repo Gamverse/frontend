@@ -1,0 +1,66 @@
+
+**Commit** → “Add README”
+
+---
+
+# **FILE 2: `frontend/play/index.html`**
+
+**Click**: **"Add file"** → **"Create new file"**
+
+**Name**: `play/index.html`  
+**Paste this**:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Play & Earn £1,000/month</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root { --green: #00FF88; --dark: #0A0A0A; }
+    body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; text-align: center; padding: 2rem; margin: 0; }
+    h1 { font-size: 2.5rem; color: var(--green); margin: 1rem 0; }
+    .calc { max-width: 400px; margin: 2rem auto; }
+    input { width: 100%; padding: 1rem; font-size: 1.5rem; background: #1A1A1A; border: 2px solid var(--green); color: white; border-radius: 12px; }
+    #result { font-size: 2rem; color: var(--green); margin: 1rem 0; }
+    button { background: var(--green); color: black; padding: 1rem 2rem; font-weight: bold; border: none; border-radius: 50px; font-size: 1.2rem; cursor: pointer; width: 100%; }
+    .proof { color: #999; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>Play 10hr/week → Earn £1,000/month</h1>
+  <p>£25/hour. No wallet. Just play.</p>
+
+  <div class="calc">
+    <input type="number" id="hours" min="1" max="40" value="10" placeholder="Hours/week">
+    <div id="result">Earn £1,000/month</div>
+    <button onclick="startEarning()">Start Earning</button>
+  </div>
+
+  <p class="proof">vs £10 from ads → <strong>100x more</strong></p>
+
+  <script>
+    const hoursInput = document.getElementById('hours');
+    const result = document.getElementById('result');
+    
+    hoursInput.oninput = () => {
+      const hours = hoursInput.value || 0;
+      const monthly = hours * 100;
+      result.textContent = `Earn £${monthly.toLocaleString()}/month`;
+    };
+
+    function startEarning() {
+      const email = prompt("Enter email to get started:");
+      if (email) {
+        fetch('https://api.gamverse.io/start', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, hours: hoursInput.value })
+        }).then(() => {
+          alert("Check your email! Play any game → earn £25/hr.");
+        });
+      }
+    }
+  </script>
+</body>
+</html>
