@@ -12,3 +12,4 @@ Live at:
 ## Deploy
 ```bash
 vercel --prod<script src="https://cdn.gamverse.io/sdk.js"></script>
+Trigger Vercel redeploy
