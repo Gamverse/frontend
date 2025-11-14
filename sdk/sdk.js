@@ -1,4 +1,4 @@
-// SDK LOADED — v2.0 — LIVE API
+
 // Gamverse SDK — 1-line integration
 // Live API URL (working now)
 const API_URL = 'https://gamverse-api-production.up.railway.app';
