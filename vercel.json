@@ -1,21 +1,15 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "play/index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "gamverse/index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "sdk/sdk.js",
+      "src": "**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
-    { "src": "/sdk/sdk.js", "dest": "/sdk/sdk.js" },
-    { "src": "/play", "dest": "/play/index.html" },
-    { "src": "/gamverse", "dest": "/gamverse/index.html" }
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
-} 
+}
